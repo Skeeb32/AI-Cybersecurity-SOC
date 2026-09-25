@@ -1,0 +1,18 @@
+AI CYBERSECURITY SOC — SYNTHETIC OFFLINE LAB
+  application: 2 events
+  auth: 25 events
+  cloud: 2 events
+  firewall: 2 events
+  nginx: 4 events
+Normalized: 35 | Signals: 4
+
+INCIDENT #1842 — Credential Attack Candidate
+Risk: HIGH (100/100)
+Investigation: MOCK | Confidence: MEDIUM (fixed teaching label)
+  +20: 23 failed logins followed by success
+  +25: Successful login outside configured synthetic baseline
+  +30: Synthetic role changed from viewer to admin
+  +25: Synthetic download: 524288000 bytes
+Response: PENDING HUMAN APPROVAL
+
+Report: reports/incidents.json

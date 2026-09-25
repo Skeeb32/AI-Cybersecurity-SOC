@@ -1,0 +1,10 @@
+{
+  "window_seconds": 600,
+  "failure_threshold": 20,
+  "large_transfer_bytes": 104857600,
+  "known_ips": {
+    "alex": ["192.0.2.10"],
+    "jordan": ["192.0.2.20"]
+  },
+  "investigation_mode": "mock"
+}

@@ -1,0 +1,489 @@
+{
+  "event_count": 35,
+  "incidents": [
+    {
+      "audit": [],
+      "category": "Credential Attack Candidate",
+      "incident_id": 1842,
+      "investigation": {
+        "alternative_explanation": "An authorized lab exercise or user retry followed by approved administration.",
+        "confidence": "MEDIUM",
+        "confidence_basis": "Fixed teaching label, not a calibrated probability",
+        "evidence_ids": [
+          "1f301fc42cbb8dc7507d",
+          "3b4f51dd21ab55c8226e",
+          "40aea41464f94537bcc8",
+          "637fae38e43532dbbeb6",
+          "6bead8e7c75e0e834760",
+          "6cfc713ed37b7d453e0e",
+          "6d5ad2a42edbe8650680",
+          "754ff10fe1a2ed3ae63b",
+          "76636c64e4f775c51d45",
+          "767ab1de886e263f20c2",
+          "7f401cc6b4e7b59cd006",
+          "8713050f8febf6d46feb",
+          "88000df91d046c42f405",
+          "8a699986cea7f7888323",
+          "b0278ae1cd6add907639",
+          "b448c527d08b10eedac1",
+          "c05fa59402810078fe22",
+          "c6e68e392a4ebe804e63",
+          "cd0bf43b3486e5cab5b5",
+          "d44980b61424941d537d",
+          "dedcf23b82a2166c6a45",
+          "e48de874b94b99dbd4ae",
+          "e73996e3abc059d4b634",
+          "f72c28319ebe9b196b6f",
+          "f816b447584d3110268a",
+          "fd0c0bd028e0d6117bdc"
+        ],
+        "interpretation": "Possible credential attack candidate; telemetry does not prove compromise.",
+        "mode": "mock",
+        "recommended_actions": [
+          "Validate authentication evidence and configured source-IP baseline",
+          "Review any role changes and synthetic data access in the timeline",
+          "Decide whether to approve simulated account isolation"
+        ],
+        "requires_human_approval": true,
+        "summary": "Correlated synthetic signals for alex: large_transfer, privilege_escalation, repeated_failures_then_success, unusual_login."
+      },
+      "proposed_response": {
+        "action": "simulate_account_isolation",
+        "target": "alex"
+      },
+      "risk": {
+        "factors": {
+          "large_transfer": 25,
+          "privilege_escalation": 30,
+          "repeated_failures_then_success": 20,
+          "unusual_login": 25
+        },
+        "level": "HIGH",
+        "model": "transparent-lab-heuristic-v1",
+        "score": 100
+      },
+      "signals": [
+        {
+          "detail": "23 failed logins followed by success",
+          "event_ids": [
+            "b448c527d08b10eedac1",
+            "637fae38e43532dbbeb6",
+            "7f401cc6b4e7b59cd006",
+            "f816b447584d3110268a",
+            "b0278ae1cd6add907639",
+            "6bead8e7c75e0e834760",
+            "e73996e3abc059d4b634",
+            "dedcf23b82a2166c6a45",
+            "754ff10fe1a2ed3ae63b",
+            "8a699986cea7f7888323",
+            "fd0c0bd028e0d6117bdc",
+            "6d5ad2a42edbe8650680",
+            "76636c64e4f775c51d45",
+            "40aea41464f94537bcc8",
+            "767ab1de886e263f20c2",
+            "3b4f51dd21ab55c8226e",
+            "88000df91d046c42f405",
+            "c05fa59402810078fe22",
+            "e48de874b94b99dbd4ae",
+            "f72c28319ebe9b196b6f",
+            "c6e68e392a4ebe804e63",
+            "8713050f8febf6d46feb",
+            "1f301fc42cbb8dc7507d",
+            "cd0bf43b3486e5cab5b5"
+          ],
+          "points": 20,
+          "rule": "repeated_failures_then_success"
+        },
+        {
+          "detail": "Successful login outside configured synthetic baseline",
+          "event_ids": [
+            "cd0bf43b3486e5cab5b5"
+          ],
+          "points": 25,
+          "rule": "unusual_login"
+        },
+        {
+          "detail": "Synthetic role changed from viewer to admin",
+          "event_ids": [
+            "6cfc713ed37b7d453e0e"
+          ],
+          "points": 30,
+          "rule": "privilege_escalation"
+        },
+        {
+          "detail": "Synthetic download: 524288000 bytes",
+          "event_ids": [
+            "d44980b61424941d537d"
+          ],
+          "points": 25,
+          "rule": "large_transfer"
+        }
+      ],
+      "source_ip": "198.51.100.42",
+      "status": "PENDING",
+      "synthetic": true,
+      "timeline": [
+        {
+          "event_id": "b448c527d08b10eedac1",
+          "event_type": "login_failure",
+          "metadata": {},
+          "resource": "lab-portal",
+          "severity": "low",
+          "source": "auth",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:02:11.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "637fae38e43532dbbeb6",
+          "event_type": "login_failure",
+          "metadata": {},
+          "resource": "lab-portal",
+          "severity": "low",
+          "source": "auth",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:02:20.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "7f401cc6b4e7b59cd006",
+          "event_type": "login_failure",
+          "metadata": {},
+          "resource": "lab-portal",
+          "severity": "low",
+          "source": "auth",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:02:29.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "f816b447584d3110268a",
+          "event_type": "login_failure",
+          "metadata": {},
+          "resource": "lab-portal",
+          "severity": "low",
+          "source": "auth",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:02:38.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "b0278ae1cd6add907639",
+          "event_type": "login_failure",
+          "metadata": {},
+          "resource": "lab-portal",
+          "severity": "low",
+          "source": "auth",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:02:47.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "6bead8e7c75e0e834760",
+          "event_type": "login_failure",
+          "metadata": {},
+          "resource": "lab-portal",
+          "severity": "low",
+          "source": "auth",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:02:56.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "e73996e3abc059d4b634",
+          "event_type": "login_failure",
+          "metadata": {},
+          "resource": "lab-portal",
+          "severity": "low",
+          "source": "auth",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:03:05.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "dedcf23b82a2166c6a45",
+          "event_type": "login_failure",
+          "metadata": {},
+          "resource": "lab-portal",
+          "severity": "low",
+          "source": "auth",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:03:14.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "754ff10fe1a2ed3ae63b",
+          "event_type": "login_failure",
+          "metadata": {},
+          "resource": "lab-portal",
+          "severity": "low",
+          "source": "auth",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:03:23.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "8a699986cea7f7888323",
+          "event_type": "login_failure",
+          "metadata": {},
+          "resource": "lab-portal",
+          "severity": "low",
+          "source": "auth",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:03:32.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "fd0c0bd028e0d6117bdc",
+          "event_type": "login_failure",
+          "metadata": {},
+          "resource": "lab-portal",
+          "severity": "low",
+          "source": "auth",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:03:41.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "6d5ad2a42edbe8650680",
+          "event_type": "login_failure",
+          "metadata": {},
+          "resource": "lab-portal",
+          "severity": "low",
+          "source": "auth",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:03:50.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "76636c64e4f775c51d45",
+          "event_type": "login_failure",
+          "metadata": {},
+          "resource": "lab-portal",
+          "severity": "low",
+          "source": "auth",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:03:59.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "40aea41464f94537bcc8",
+          "event_type": "login_failure",
+          "metadata": {},
+          "resource": "lab-portal",
+          "severity": "low",
+          "source": "auth",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:04:08.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "767ab1de886e263f20c2",
+          "event_type": "login_failure",
+          "metadata": {},
+          "resource": "lab-portal",
+          "severity": "low",
+          "source": "auth",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:04:17.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "3b4f51dd21ab55c8226e",
+          "event_type": "login_failure",
+          "metadata": {},
+          "resource": "lab-portal",
+          "severity": "low",
+          "source": "auth",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:04:26.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "88000df91d046c42f405",
+          "event_type": "login_failure",
+          "metadata": {},
+          "resource": "lab-portal",
+          "severity": "low",
+          "source": "auth",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:04:35.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "c05fa59402810078fe22",
+          "event_type": "login_failure",
+          "metadata": {},
+          "resource": "lab-portal",
+          "severity": "low",
+          "source": "auth",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:04:44.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "e48de874b94b99dbd4ae",
+          "event_type": "login_failure",
+          "metadata": {},
+          "resource": "lab-portal",
+          "severity": "low",
+          "source": "auth",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:04:53.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "f72c28319ebe9b196b6f",
+          "event_type": "login_failure",
+          "metadata": {},
+          "resource": "lab-portal",
+          "severity": "low",
+          "source": "auth",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:05:02.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "c6e68e392a4ebe804e63",
+          "event_type": "login_failure",
+          "metadata": {},
+          "resource": "lab-portal",
+          "severity": "low",
+          "source": "auth",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:05:11.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "8713050f8febf6d46feb",
+          "event_type": "login_failure",
+          "metadata": {},
+          "resource": "lab-portal",
+          "severity": "low",
+          "source": "auth",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:05:20.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "1f301fc42cbb8dc7507d",
+          "event_type": "login_failure",
+          "metadata": {},
+          "resource": "lab-portal",
+          "severity": "low",
+          "source": "auth",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:05:29.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "cd0bf43b3486e5cab5b5",
+          "event_type": "login_success",
+          "metadata": {},
+          "resource": "lab-portal",
+          "severity": "info",
+          "source": "auth",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:06:02.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "db285f80417a2b88480b",
+          "event_type": "web_request",
+          "metadata": {
+            "bytes": 256,
+            "method": "POST",
+            "status": 200
+          },
+          "resource": "/login",
+          "severity": "info",
+          "source": "nginx",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:06:02.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "aba35e5ace9f4cab2194",
+          "event_type": "web_request",
+          "metadata": {
+            "bytes": 2048,
+            "method": "GET",
+            "status": 200
+          },
+          "resource": "/dashboard",
+          "severity": "info",
+          "source": "nginx",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:06:04.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "440bd762b54ff92078bd",
+          "event_type": "network_allowed",
+          "metadata": {},
+          "resource": "lab-portal",
+          "severity": "info",
+          "source": "firewall",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:06:10.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "6cfc713ed37b7d453e0e",
+          "event_type": "privilege_escalation",
+          "metadata": {
+            "new_role": "admin",
+            "previous_role": "viewer"
+          },
+          "resource": "lab-portal",
+          "severity": "medium",
+          "source": "application",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:07:18.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "82c0bc9f423cc1ae9aca",
+          "event_type": "web_request",
+          "metadata": {
+            "bytes": 128,
+            "method": "GET",
+            "status": 200
+          },
+          "resource": "/api/export",
+          "severity": "info",
+          "source": "nginx",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:09:43.000000Z",
+          "user": "alex"
+        },
+        {
+          "event_id": "d44980b61424941d537d",
+          "event_type": "data_download",
+          "metadata": {
+            "action": "DownloadObject",
+            "bytes": 524288000
+          },
+          "resource": "synthetic-bucket",
+          "severity": "info",
+          "source": "cloud",
+          "source_ip": "198.51.100.42",
+          "timestamp": "2026-01-15T14:09:44.000000Z",
+          "user": "alex"
+        }
+      ],
+      "user": "alex"
+    }
+  ],
+  "mode": "offline-lab",
+  "schema_version": 1,
+  "signal_count": 4,
+  "synthetic": true,
+  "telemetry_counts": {
+    "application": 2,
+    "auth": 25,
+    "cloud": 2,
+    "firewall": 2,
+    "nginx": 4
+  }
+}

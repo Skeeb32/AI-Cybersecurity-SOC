@@ -1,0 +1,2 @@
+{"action": "DownloadObject", "bytes": 524288000, "principal": "alex", "resource": "synthetic-bucket", "source_ip": "198.51.100.42", "synthetic": true, "timestamp": "2026-01-15T14:09:44Z"}
+{"action": "ListObjects", "bytes": 512, "principal": "jordan", "resource": "synthetic-bucket", "source_ip": "192.0.2.20", "synthetic": true, "timestamp": "2026-01-15T14:01:15Z"}
